@@ -14,7 +14,7 @@ namespace Маркировка_резисторов
 
         public int Parse(string Section, string Key)
         {
-            char[] res = new char[5];
+            char[] res = new char[60];
             SafeNativeMethods.GetPrivateProfileString(Section, Key, null, res, res.Length, FilePath);
             return int.Parse(new string(res));
         }
