@@ -108,41 +108,29 @@ namespace Маркировка_резисторов
             catch (Exception) { }
         }
 
+        private string GetDenomination(float value)
+        {
+            if (value < 1000)
+            {
+                return string.Format("{0} Ом", value);
+            }
+            else if (value >= 1000 && value < 1000000)
+            {
+                return string.Format("{0} кОм", value / 1000);
+            }
+            else
+            {
+                return string.Format("{0} МОм", value / 1000000);
+            }
+        }
+
         private void ShowResistance()
         {
-            float val = (10 * cb1.SelectedIndex + cb2.SelectedIndex) * factor[cb3.SelectedIndex];
+            float value = (10 * cb1.SelectedIndex + cb2.SelectedIndex) * factor[cb3.SelectedIndex];
+            label1.Text = string.Format("{0}     Погрешность ±{1} %", GetDenomination(value), variationOne[cb4.SelectedIndex]);
 
-            if (val < 1000)
-            {
-                label1.Text = val.ToString() + " Ом";
-            }
-            else if (val >= 1000 && val < 1000000)
-            {
-                label1.Text = (val / 1000).ToString() + " кОм";
-            }
-            else
-            {
-                label1.Text = (val / 1000000).ToString() + " МОм";
-            }
-
-            label1.Text += string.Format("     Погрешность ±{0} %", variationOne[cb4.SelectedIndex]);
-
-            val = (100 * cb5.SelectedIndex + 10 * cb6.SelectedIndex + cb7.SelectedIndex) * factor[cb8.SelectedIndex];
-
-            if (val < 1000)
-            {
-                label2.Text = val.ToString() + " Ом";
-            }
-            else if (val >= 1000 && val < 1000000)
-            {
-                label2.Text = (val / 1000).ToString() + " кОм";
-            }
-            else
-            {
-                label2.Text = (val / 1000000).ToString() + " МОм";
-            }
-
-            label2.Text += string.Format("     Погрешность ±{0} %", variationTwo[cb9.SelectedIndex]);
+            value = (100 * cb5.SelectedIndex + 10 * cb6.SelectedIndex + cb7.SelectedIndex) * factor[cb8.SelectedIndex];
+            label2.Text = string.Format("{0}   Погрешность ±{1} %", GetDenomination(value), variationTwo[cb9.SelectedIndex]);
 
             Refresh();
         }
