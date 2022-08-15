@@ -130,7 +130,7 @@ namespace Маркировка_резисторов
             label1.Text = string.Format("{0}     Погрешность ±{1} %", GetDenomination(value), variationOne[cb4.SelectedIndex]);
 
             value = (100 * cb5.SelectedIndex + 10 * cb6.SelectedIndex + cb7.SelectedIndex) * factor[cb8.SelectedIndex];
-            label2.Text = string.Format("{0}   Погрешность ±{1} %", GetDenomination(value), variationTwo[cb9.SelectedIndex]);
+            label2.Text = string.Format("{0}    Погрешность ±{1} %", GetDenomination(value), variationTwo[cb9.SelectedIndex]);
 
             Refresh();
         }
@@ -157,9 +157,10 @@ namespace Маркировка_резисторов
             e.DrawBackground();
             string text = (sender as ComboBox).Items[e.Index].ToString();
             e.Graphics.DrawString(text, e.Font, Brushes.Black, e.Bounds);
-            Color color = Color.FromName(text);
-            SolidBrush brush = new SolidBrush(color);
-            e.Graphics.FillRectangle(brush, e.Bounds.X + 50, e.Bounds.Y, e.Bounds.Width - 50, e.Bounds.Height);
+            using (SolidBrush brush = new SolidBrush(Color.FromName(text)))
+            {
+                e.Graphics.FillRectangle(brush, e.Bounds.X + 50, e.Bounds.Y, e.Bounds.Width - 50, e.Bounds.Height);
+            }
         }
     }
 }
