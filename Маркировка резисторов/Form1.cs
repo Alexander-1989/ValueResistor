@@ -7,24 +7,28 @@ namespace Маркировка_резисторов
     public partial class Form1 : Form
     {
         private readonly IniFile INI = new IniFile();
-        private readonly byte[] variation = { 1, 2, 5, 10 };
-        private readonly float[] variation2 = { 0.05F, 0.1F, 0.25F, 0.5F, 1F, 2F, 5F, 10F };
+        private readonly float[] variationOne = { 1F, 2F, 5F, 10F };
+        private readonly float[] variationTwo = { 0.05F, 0.1F, 0.25F, 0.5F, 1F, 2F, 5F, 10F };
         private readonly float[] factor = { 0.01F, 0.1F, 1F, 10F, 100F, 1000F, 10000F, 100000F, 1000000F, 10000000F };
+
+        private readonly string[] valueColors = { "Black", "Brown", "Red", "Orange", "Yellow", "Green", "Blue", "Purple", "Gray", "White" };
+        private readonly string[] factorColors = { "Silver", "Gold", "Black", "Brown", "Red", "Orange", "Yellow", "Green", "Blue", "Purple" };
+        private readonly string[] variationColorsOne = { "Brown", "Red", "Gold", "Silver" };
+        private readonly string[] variationColorsTwo = { "Gray", "Purple", "Blue", "Green", "Brown", "Red", "Gold", "Silver" };
 
         public Form1()
         {
             InitializeComponent();
 
-            cb1.Items.AddRange(new object[] { "Black", "Brown", "Red", "Orange", "Yellow", "Green", "Blue", "Purple", "Gray", "White" });
-            cb2.Items.AddRange(new object[] { "Black", "Brown", "Red", "Orange", "Yellow", "Green", "Blue", "Purple", "Gray", "White" });
-            cb3.Items.AddRange(new object[] { "Silver", "Gold", "Black", "Brown", "Red", "Orange", "Yellow", "Green", "Blue", "Purple" });
-            cb4.Items.AddRange(new object[] { "Brown", "Red", "Gold", "Silver" });
-
-            cb5.Items.AddRange(new object[] { "Black", "Brown", "Red", "Orange", "Yellow", "Green", "Blue", "Purple", "Gray", "White" });
-            cb6.Items.AddRange(new object[] { "Black", "Brown", "Red", "Orange", "Yellow", "Green", "Blue", "Purple", "Gray", "White" });
-            cb7.Items.AddRange(new object[] { "Black", "Brown", "Red", "Orange", "Yellow", "Green", "Blue", "Purple", "Gray", "White" });
-            cb8.Items.AddRange(new object[] { "Silver", "Gold", "Black", "Brown", "Red", "Orange", "Yellow", "Green", "Blue", "Purple" });
-            cb9.Items.AddRange(new object[] { "Gray", "Purple", "Blue", "Green", "Brown", "Red", "Gold", "Silver" });
+            cb1.Items.AddRange(valueColors);
+            cb2.Items.AddRange(valueColors);
+            cb3.Items.AddRange(factorColors);
+            cb4.Items.AddRange(variationColorsOne);
+            cb5.Items.AddRange(valueColors);
+            cb6.Items.AddRange(valueColors);
+            cb7.Items.AddRange(valueColors);
+            cb8.Items.AddRange(factorColors);
+            cb9.Items.AddRange(variationColorsTwo);
 
             ReadParameters();
             ShowResistance();
@@ -51,7 +55,6 @@ namespace Маркировка_резисторов
 
             tabPage1.Paint += TabPage1_Paint;
             tabPage2.Paint += TabPage2_Paint;
-            FormClosed += Form1_FormClosed;
         }
 
         private void ReadParameters()
@@ -72,9 +75,15 @@ namespace Маркировка_резисторов
             }
             catch (Exception)
             {
-                cb1.SelectedIndex = 2; cb2.SelectedIndex = 5; cb3.SelectedIndex = 6;
-                cb4.SelectedIndex = 3; cb5.SelectedIndex = 2; cb6.SelectedIndex = 5;
-                cb7.SelectedIndex = 6; cb8.SelectedIndex = 5; cb9.SelectedIndex = 7;
+                cb1.SelectedIndex = 2;
+                cb2.SelectedIndex = 5;
+                cb3.SelectedIndex = 6;
+                cb4.SelectedIndex = 3;
+                cb5.SelectedIndex = 2;
+                cb6.SelectedIndex = 5;
+                cb7.SelectedIndex = 6;
+                cb8.SelectedIndex = 5;
+                cb9.SelectedIndex = 7;
             }
         }
 
@@ -101,16 +110,38 @@ namespace Маркировка_резисторов
         private void ShowResistance()
         {
             float val = (10 * cb1.SelectedIndex + cb2.SelectedIndex) * factor[cb3.SelectedIndex];
-            if (val < 1000) label1.Text = val.ToString() + " Ом";
-            else if (val >= 1000 && val < 1000000) label1.Text = (val / 1000).ToString() + " кОм";
-            else label1.Text = (val / 1000000).ToString() + " МОм";
-            label1.Text += "     Погрешность ±" + variation[cb4.SelectedIndex] + " %";
+
+            if (val < 1000)
+            {
+                label1.Text = val.ToString() + " Ом";
+            }
+            else if (val >= 1000 && val < 1000000)
+            {
+                label1.Text = (val / 1000).ToString() + " кОм";
+            }
+            else
+            {
+                label1.Text = (val / 1000000).ToString() + " МОм";
+            }
+
+            label1.Text += string.Format("     Погрешность ±{0} %", variationOne[cb4.SelectedIndex]);
 
             val = (100 * cb5.SelectedIndex + 10 * cb6.SelectedIndex + cb7.SelectedIndex) * factor[cb8.SelectedIndex];
-            if (val < 1000) label2.Text = val.ToString() + " Ом";
-            else if (val >= 1000 && val < 1000000) label2.Text = (val / 1000).ToString() + " кОм";
-            else label2.Text = (val / 1000000).ToString() + " МОм";
-            label2.Text += "     Погрешность ±" + variation2[cb9.SelectedIndex] + " %";
+
+            if (val < 1000)
+            {
+                label2.Text = val.ToString() + " Ом";
+            }
+            else if (val >= 1000 && val < 1000000)
+            {
+                label2.Text = (val / 1000).ToString() + " кОм";
+            }
+            else
+            {
+                label2.Text = (val / 1000000).ToString() + " МОм";
+            }
+
+            label2.Text += string.Format("     Погрешность ±{0} %", variationTwo[cb9.SelectedIndex]);
 
             Refresh();
         }

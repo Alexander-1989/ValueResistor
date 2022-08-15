@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Text;
 using System.Runtime.InteropServices;
 
@@ -6,7 +7,7 @@ namespace Маркировка_резисторов
 {
     internal class IniFile
     {
-        private readonly string fileName = ".\\MRDat.ini";
+        private readonly string fileName = Path.Combine(Environment.CurrentDirectory, "MRDat.ini");
 
         public void Write<T>(string Section, string Key, T Value) where T : IConvertible
         {
@@ -23,10 +24,10 @@ namespace Маркировка_резисторов
         private static class SafeNativeMethods
         {
             [DllImport("kernel32.dll", EntryPoint = "WritePrivateProfileString", CharSet = CharSet.Unicode)]
-            internal static extern int WritePrivateProfileString(string Section, string Key, string Value, string File);
+            internal static extern int WritePrivateProfileString(string Section, string Key, string Value, string fileName);
 
             [DllImport("kernel32.dll", CharSet = CharSet.Unicode, EntryPoint = "GetPrivateProfileString")]
-            internal static extern int GetPrivateProfileString(string Section, string Key, string Default, StringBuilder Result, int Size, string FileName);
+            internal static extern int GetPrivateProfileString(string Section, string Key, string Default, StringBuilder Result, int Size, string fileName);
         }
     }
 }
