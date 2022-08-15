@@ -52,7 +52,6 @@
             this.cb1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cb1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cb1.FormattingEnabled = true;
-            this.cb1.Items.AddRange(new object[] { "Black", "Brown", "Red", "Orange", "Yellow", "Green", "Blue", "Purple", "Gray", "White" });
             this.cb1.Location = new System.Drawing.Point(6, 6);
             this.cb1.Name = "cb1";
             this.cb1.Size = new System.Drawing.Size(122, 22);
@@ -63,7 +62,6 @@
             this.cb2.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cb2.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cb2.FormattingEnabled = true;
-            this.cb2.Items.AddRange(new object[] { "Black", "Brown", "Red", "Orange", "Yellow", "Green", "Blue", "Purple", "Gray", "White" });
             this.cb2.Location = new System.Drawing.Point(6, 33);
             this.cb2.Name = "cb2";
             this.cb2.Size = new System.Drawing.Size(122, 22);
@@ -74,7 +72,6 @@
             this.cb3.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cb3.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cb3.FormattingEnabled = true;
-            this.cb3.Items.AddRange(new object[] { "Silver", "Gold", "Black", "Brown", "Red", "Orange", "Yellow", "Green", "Blue", "Purple" });
             this.cb3.Location = new System.Drawing.Point(6, 60);
             this.cb3.Name = "cb3";
             this.cb3.Size = new System.Drawing.Size(122, 22);
@@ -85,7 +82,6 @@
             this.cb4.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cb4.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cb4.FormattingEnabled = true;
-            this.cb4.Items.AddRange(new object[] { "Brown", "Red", "Gold", "Silver" });
             this.cb4.Location = new System.Drawing.Point(6, 87);
             this.cb4.Name = "cb4";
             this.cb4.Size = new System.Drawing.Size(122, 22);
@@ -96,7 +92,6 @@
             this.cb5.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cb5.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cb5.FormattingEnabled = true;
-            this.cb5.Items.AddRange(new object[] { "Black", "Brown", "Red", "Orange", "Yellow", "Green", "Blue", "Purple", "Gray", "White" });
             this.cb5.Location = new System.Drawing.Point(6, 6);
             this.cb5.Name = "cb5";
             this.cb5.Size = new System.Drawing.Size(122, 22);
@@ -107,7 +102,6 @@
             this.cb6.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cb6.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cb6.FormattingEnabled = true;
-            this.cb6.Items.AddRange(new object[] { "Black", "Brown", "Red", "Orange", "Yellow", "Green", "Blue", "Purple", "Gray", "White" });
             this.cb6.Location = new System.Drawing.Point(6, 33);
             this.cb6.Name = "cb6";
             this.cb6.Size = new System.Drawing.Size(122, 22);
@@ -118,7 +112,6 @@
             this.cb7.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cb7.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cb7.FormattingEnabled = true;
-            this.cb7.Items.AddRange(new object[] { "Black", "Brown", "Red", "Orange", "Yellow", "Green", "Blue", "Purple", "Gray", "White" });
             this.cb7.Location = new System.Drawing.Point(6, 60);
             this.cb7.Name = "cb7";
             this.cb7.Size = new System.Drawing.Size(122, 22);
@@ -129,7 +122,6 @@
             this.cb8.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cb8.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cb8.FormattingEnabled = true;
-            this.cb8.Items.AddRange(new object[] { "Silver", "Gold", "Black", "Brown", "Red", "Orange", "Yellow", "Green", "Blue", "Purple" });
             this.cb8.Location = new System.Drawing.Point(6, 87);
             this.cb8.Name = "cb8";
             this.cb8.Size = new System.Drawing.Size(122, 22);
@@ -140,7 +132,6 @@
             this.cb9.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cb9.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cb9.FormattingEnabled = true;
-            this.cb9.Items.AddRange(new object[] { "Gray", "Purple", "Blue", "Green", "Brown", "Red", "Gold", "Silver" });
             this.cb9.Location = new System.Drawing.Point(6, 114);
             this.cb9.Name = "cb9";
             this.cb9.Size = new System.Drawing.Size(122, 22);

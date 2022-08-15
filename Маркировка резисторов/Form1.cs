@@ -6,14 +6,26 @@ namespace Маркировка_резисторов
 {
     public partial class Form1 : Form
     {
-        IniFile INI = new IniFile();
-        byte  [] variation  = { 1, 2, 5, 10 };
-        float [] variation2 = { 0.05F, 0.1F, 0.25F, 0.5F, 1F, 2F, 5F, 10F };
-        float [] factor = { 0.01F, 0.1F, 1F, 10F, 100F, 1000F, 10000F, 100000F, 1000000F, 10000000F };
-        
+        private readonly IniFile INI = new IniFile();
+        private readonly byte[] variation = { 1, 2, 5, 10 };
+        private readonly float[] variation2 = { 0.05F, 0.1F, 0.25F, 0.5F, 1F, 2F, 5F, 10F };
+        private readonly float[] factor = { 0.01F, 0.1F, 1F, 10F, 100F, 1000F, 10000F, 100000F, 1000000F, 10000000F };
+
         public Form1()
         {
             InitializeComponent();
+
+            cb1.Items.AddRange(new object[] { "Black", "Brown", "Red", "Orange", "Yellow", "Green", "Blue", "Purple", "Gray", "White" });
+            cb2.Items.AddRange(new object[] { "Black", "Brown", "Red", "Orange", "Yellow", "Green", "Blue", "Purple", "Gray", "White" });
+            cb3.Items.AddRange(new object[] { "Silver", "Gold", "Black", "Brown", "Red", "Orange", "Yellow", "Green", "Blue", "Purple" });
+            cb4.Items.AddRange(new object[] { "Brown", "Red", "Gold", "Silver" });
+
+            cb5.Items.AddRange(new object[] { "Black", "Brown", "Red", "Orange", "Yellow", "Green", "Blue", "Purple", "Gray", "White" });
+            cb6.Items.AddRange(new object[] { "Black", "Brown", "Red", "Orange", "Yellow", "Green", "Blue", "Purple", "Gray", "White" });
+            cb7.Items.AddRange(new object[] { "Black", "Brown", "Red", "Orange", "Yellow", "Green", "Blue", "Purple", "Gray", "White" });
+            cb8.Items.AddRange(new object[] { "Silver", "Gold", "Black", "Brown", "Red", "Orange", "Yellow", "Green", "Blue", "Purple" });
+            cb9.Items.AddRange(new object[] { "Gray", "Purple", "Blue", "Green", "Brown", "Red", "Gold", "Silver" });
+
             ReadParameters();
             ShowResistance();
 
@@ -125,7 +137,9 @@ namespace Маркировка_резисторов
             e.DrawBackground();
             string text = (sender as ComboBox).Items[e.Index].ToString();
             e.Graphics.DrawString(text, e.Font, Brushes.Black, e.Bounds);
-            e.Graphics.FillRectangle(new SolidBrush(Color.FromName(text)), e.Bounds.X + 50, e.Bounds.Y, e.Bounds.Width - 50, e.Bounds.Height);
+            Color color = Color.FromName(text);
+            SolidBrush brush = new SolidBrush(color);
+            e.Graphics.FillRectangle(brush, e.Bounds.X + 50, e.Bounds.Y, e.Bounds.Width - 50, e.Bounds.Height);
         }
     }
 }

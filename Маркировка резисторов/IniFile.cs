@@ -1,22 +1,23 @@
 ﻿using System;
+using System.Text;
 using System.Runtime.InteropServices;
 
 namespace Маркировка_резисторов
 {
-    class IniFile
+    internal class IniFile
     {
-        readonly string FilePath = ".\\MRDat.ini";
+        private readonly string fileName = ".\\MRDat.ini";
 
         public void Write<T>(string Section, string Key, T Value) where T : IConvertible
         {
-            SafeNativeMethods.WritePrivateProfileString(Section, Key, Value.ToString(), FilePath);
+            SafeNativeMethods.WritePrivateProfileString(Section, Key, Value.ToString(), fileName);
         }
 
         public int Parse(string Section, string Key)
         {
-            char[] res = new char[60];
-            SafeNativeMethods.GetPrivateProfileString(Section, Key, null, res, res.Length, FilePath);
-            return int.Parse(new string(res));
+            StringBuilder result = new StringBuilder(60);
+            SafeNativeMethods.GetPrivateProfileString(Section, Key, null, result, result.Capacity, fileName);
+            return int.Parse(result.ToString());
         }
 
         private static class SafeNativeMethods
@@ -24,8 +25,8 @@ namespace Маркировка_резисторов
             [DllImport("kernel32.dll", EntryPoint = "WritePrivateProfileString", CharSet = CharSet.Unicode)]
             internal static extern int WritePrivateProfileString(string Section, string Key, string Value, string File);
 
-            [DllImport("kernel32.dll", EntryPoint = "GetPrivateProfileString", CharSet = CharSet.Unicode)]
-            internal static extern int GetPrivateProfileString(string Section, string Key, string Def, char[] Result, int Size, string File);
+            [DllImport("kernel32.dll", CharSet = CharSet.Unicode, EntryPoint = "GetPrivateProfileString")]
+            internal static extern int GetPrivateProfileString(string Section, string Key, string Default, StringBuilder Result, int Size, string FileName);
         }
     }
 }
