@@ -7,17 +7,18 @@ namespace Маркировка_резисторов
 {
     internal class IniFile
     {
-        private readonly string fileName = Path.Combine(Environment.CurrentDirectory, "MRDat.ini");
+        private const string _name = "MRDat.ini";
+        private readonly string _fileName = Path.Combine(Environment.CurrentDirectory, _name);
 
         public void Write<T>(string Section, string Key, T Value) where T : IConvertible
         {
-            SafeNativeMethods.WritePrivateProfileString(Section, Key, Value.ToString(), fileName);
+            SafeNativeMethods.WritePrivateProfileString(Section, Key, Value.ToString(), _fileName);
         }
 
         public int Parse(string Section, string Key)
         {
             StringBuilder result = new StringBuilder(60);
-            SafeNativeMethods.GetPrivateProfileString(Section, Key, null, result, result.Capacity, fileName);
+            SafeNativeMethods.GetPrivateProfileString(Section, Key, null, result, result.Capacity, _fileName);
             return int.Parse(result.ToString());
         }
 

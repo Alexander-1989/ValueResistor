@@ -7,6 +7,7 @@ namespace Маркировка_резисторов
     public partial class Form1 : Form
     {
         private readonly IniFile INI = new IniFile();
+
         private readonly float[] variationOne = { 1F, 2F, 5F, 10F };
         private readonly float[] variationTwo = { 0.05F, 0.1F, 0.25F, 0.5F, 1F, 2F, 5F, 10F };
         private readonly float[] factor = { 0.01F, 0.1F, 1F, 10F, 100F, 1000F, 10000F, 100000F, 1000000F, 10000000F };
