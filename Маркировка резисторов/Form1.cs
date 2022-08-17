@@ -135,21 +135,29 @@ namespace Маркировка_резисторов
             Refresh();
         }
 
+        private void PrintRectangle(ComboBox comboBox, Graphics graphics)
+        {
+            using (SolidBrush brush = new SolidBrush(Color.FromName(comboBox.Text)))
+            {
+                graphics.FillRectangle(brush, 140, comboBox.Top, 50, 22);
+            }
+        }
+
         private void TabPage1_Paint(object sender, PaintEventArgs e)
         {
-            e.Graphics.FillRectangle(new SolidBrush(Color.FromName(cb1.Text)), 140, cb1.Top, 50, 22);
-            e.Graphics.FillRectangle(new SolidBrush(Color.FromName(cb2.Text)), 140, cb2.Top, 50, 22);
-            e.Graphics.FillRectangle(new SolidBrush(Color.FromName(cb3.Text)), 140, cb3.Top, 50, 22);
-            e.Graphics.FillRectangle(new SolidBrush(Color.FromName(cb4.Text)), 140, cb4.Top, 50, 22);
+            PrintRectangle(cb1, e.Graphics);
+            PrintRectangle(cb2, e.Graphics);
+            PrintRectangle(cb3, e.Graphics);
+            PrintRectangle(cb4, e.Graphics);
         }
 
         private void TabPage2_Paint(object sender, PaintEventArgs e)
         {
-            e.Graphics.FillRectangle(new SolidBrush(Color.FromName(cb5.Text)), 140, cb5.Top, 50, 22);
-            e.Graphics.FillRectangle(new SolidBrush(Color.FromName(cb6.Text)), 140, cb6.Top, 50, 22);
-            e.Graphics.FillRectangle(new SolidBrush(Color.FromName(cb7.Text)), 140, cb7.Top, 50, 22);
-            e.Graphics.FillRectangle(new SolidBrush(Color.FromName(cb8.Text)), 140, cb8.Top, 50, 22);
-            e.Graphics.FillRectangle(new SolidBrush(Color.FromName(cb9.Text)), 140, cb9.Top, 50, 22);
+            PrintRectangle(cb5, e.Graphics);
+            PrintRectangle(cb6, e.Graphics);
+            PrintRectangle(cb7, e.Graphics);
+            PrintRectangle(cb8, e.Graphics);
+            PrintRectangle(cb9, e.Graphics);
         }
 
         private void ComboBox_DrawItem(object sender, DrawItemEventArgs e)
