@@ -132,7 +132,7 @@ namespace Маркировка_резисторов
             value = (100 * cb5.SelectedIndex + 10 * cb6.SelectedIndex + cb7.SelectedIndex) * factor[cb8.SelectedIndex];
             label2.Text = string.Format("{0}    Погрешность ±{1} %", GetDenomination(value), variationTwo[cb9.SelectedIndex]);
 
-            Refresh();
+            tabControl.Invalidate();
         }
 
         private void PrintRectangle(ComboBox comboBox, Graphics graphics)
